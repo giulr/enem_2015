@@ -1,0 +1,5 @@
+CREATE_TABLE candidato(id_candidato integer CONSTRAINT pk_id_candidato PRIMARY KEY, numero_inscricao bigint NOT NULL,UF_residencia varchar(2) NOT NULL);
+
+CREATE TABLE candidato_redacao_1000(id_candidato_redacao CONSTRAINT pk_id_aluno_redacao PRIMARY KEY, id_candidato integer NOT NULL, FOREIGN KEY(id_candidato) REFERENCES candidato ON DELETE CASCADE);
+
+ALTER TABLE candidato ADD COLUMN genero character varying(2);

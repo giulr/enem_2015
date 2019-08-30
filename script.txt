@@ -1,0 +1,6 @@
+pyspark --conf "spark.mongodb.input.uri=mongodb://ip_do_mongo/nome_do_db.nomeColecao?readPreference=primaryPreferred" --conf "spark.mongodb.output.uri=mongodb://10.7.40.136/enem2015.candidatos" --packages org.mongodb.spark:mongo-spark-connector_2.11:2.2.2
+
+
+spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.2.2 trabFinalTeste.py
+
+ /usr/lib/jvm/java-8-openjdk-i386/jre/bin/java: No such file or directory

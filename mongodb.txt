@@ -1,0 +1,39 @@
+> db.funcionarios.aggregate([{"$match":{"empresa":"4Linux"}},{"$group":{"_id":"$empresa","total":{"$sum":1}}}])
+{ "_id" : "4Linux", "total" : 4 }
+
+db.candidatos.aggregate([{"$group": {"_id": {"GENERO" :"$TP_SEXO", "UF_RESIDENCIA":"$SG_UF_RESIDENCIA"}}},
+            {"$project":{"_id":0, "UF_RESIDENCIA":"$SG_UF_RESIDENCIA" }}])
+
+
+db.candidatos.aggregate([{"$match":{"TP_SEXO":"M"},$group:{"SG_UF_RESIDENCIA":"GO"}])
+
+db.candidatos.aggregate([{"$match":{"TP_SEXO":"M"}}])
+
+db.funcionarios.aggregate([{"$match":{"empresa":"4Linux"}},{"$group":{"_id":"$empresa","total":{"$sum":1}}}])
+db.candidatos.aggregate([{"$match":{"TP_SEXO":"M"}}, {"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA"}, "total_genero_masculino":{"$sum":1}}}])
+
+ spark-submit --packages org.mongodb.spark:mongo-spark-connector_2.11:2.2.2 SEU_PROGRAMA.py
+
+db.candidatos.aggregate([{"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA", "GENERO": "$TP_SEXO"},  "TOTAL":{"$sum":1}}}])
+db.candidatos.aggregate([{"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA"},  "TOTAL":{"$sum":1}}}])
+
+db.candidatos.aggregate({"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA"}, "TOTAL":{"$sum":1}}}, {"$project":{"_id":1, "TOTAL":1}})
+
+
+db.candidatos.aggregate({"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA" , "GENERO":"$TP_SEXO"}, "TOTAL":{"$sum":1}}}, {"$project":{"_id":1,"GENERO":1,"TOTAL":1}})
+
+db.candidatos.aggregate({"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA" , "GENERO":"$TP_SEXO"}, "IDADE_MEDIA":{"$avg":"$NU_IDADE"}}}, {"$project":{"_id":1,"GENERO":1,"IDADE_MEDIA":1}})
+
+"NU_NOTA_REDACAO" : 780
+
+"NU_NOTA_CN" : 556.8, "NU_NOTA_CH" : 635.5, "NU_NOTA_LC" : 559.8, "NU_NO                                              TA_MT" : 565.7, "NU_NOTA_REDACAO" : 780,
+
+
+
+db.candidatos.aggregate({"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA","GENERO":"$TP_SEXO"}},"NOTA_MEDIA_CN":{"$avg":"$NU_NOTA_CN"},"CN":{"$avg":"$NU_NOTA_CN"},"CH":"$avg":"$NU_NOTA_CH"},"LC":{"$avg":"$NU_NOTA_LC"},"MT":{"$avg":"$NU_NOTA_MT"},"REDACAO":{"$avg":"$NU_NOTA_REDACAO"},},{"$project":{"_id":1,"GENERO":1,"CN":1,"CH":1,"LC":1,"MT":1,"REDACAO":1}})
+
+
+db.candidatos.aggregate({"$group":{"_id":{"UF_RESIDENCIA":"$SG_UF_RESIDENCIA","GENERO":"$TP_SEXO"},"NOTA_MEDIA_CN":{"$avg":"$NU_NOTA_CN"},"CN":{"$avg":"$NU_NOTA_CN"},"CH":{"$avg":"$NU_NOTA_CH"}, "LC":{"$avg":"$NU_NOTA_LC"},"MT":{"$avg":"$NU_NOTA_MT"},"REDACAO":{"$avg":"$NU_NOTA_REDACAO"}}},{"$project":{"_id":1,"GENERO":1,"CN":1, "CH":1, "LC":1, "MT":1, "REDACAO":1}})
+
+
+
